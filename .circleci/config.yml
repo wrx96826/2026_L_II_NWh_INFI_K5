@@ -15,7 +15,7 @@ jobs:
       - run: make test
       - run:
           name: Build Docker image
-          command: make docker_build
+          command: make docker_push
 
 workflows:
   basic:
