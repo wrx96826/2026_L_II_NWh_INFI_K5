@@ -1,5 +1,4 @@
 version: 2.1
-
 jobs:
   build-and-test:
     machine:
@@ -9,11 +8,9 @@ jobs:
       - run: make deps
       - run: make lint
       - run: make test
-      - setup_remote_docker
       - run:
           name: Build and push Docker image
           command: make docker_push
-
 workflows:
   version: 2
   basic:
