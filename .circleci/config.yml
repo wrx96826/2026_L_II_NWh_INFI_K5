@@ -16,8 +16,7 @@ jobs:
       - run:
           name: Build and push Docker image
           environment:
-            # Tutaj mapujemy zmienne z CircleCI Settings do zmiennych używanych przez Makefile
-            USERNAME: $DOCKER_USER
+            DOCKER_USER: $DOCKER_USER
             DOCKER_PASSWORD: $DOCKER_PASSWORD
           command: make docker_push
 
