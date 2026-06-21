@@ -1,7 +1,5 @@
 .PHONY: deps lint test run docker_build docker_run docker_push
 
-TAG=$(USERNAME)/hello-world-printer
-
 deps:
 	pip install -r requirements.txt
 	pip install -r test_requirements.txt
@@ -22,7 +20,7 @@ docker_run: docker_build
 		-d hello-world-printer
 
 docker_push: docker_build
-	@echo "$${DOCKER_PASSWORD}" | docker login --username "$(USERNAME)" --password-stdin
-	docker tag hello-world-printer $(TAG)
-	docker push $(TAG)
+	@echo "$${DOCKER_PASSWORD}" | docker login --username "$${USERNAME}" --password-stdin
+	docker tag hello-world-printer "$${USERNAME}/hello-world-printer"
+	docker push "$${USERNAME}/hello-world-printer"
 	docker logout
