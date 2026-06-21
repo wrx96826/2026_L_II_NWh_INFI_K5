@@ -8,13 +8,16 @@ jobs:
     steps:
       - checkout
       - run: make deps
-      # Dodane uruchomienie lintera przed testami (Zadanie, punkt 9)
       - run:
           name: Run Linter
           command: make lint
       - run: make test
+      - setup_remote_docker
       - run:
-          name: Build Docker image
+          name: Build and push Docker image
+          environment:
+            USERNAME: $USERNAME
+            DOCKER_PASSWORD: $DOCKER_PASSWORD
           command: make docker_push
 
 workflows:
